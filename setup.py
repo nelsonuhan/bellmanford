@@ -4,7 +4,7 @@ setup(
     name='bellmanford',
     version='0.1',
     description='''
-        Minor usability enhancements to the Bellman-Ford routines in NetworkX
+        Convenience wrappers for the Bellman-Ford routines in NetworkX
         (https://networkx.github.io).
     ''',
     url='https://github.com/nelsonuhan/bellmanford',
