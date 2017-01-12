@@ -77,10 +77,46 @@ def negative_edge_cycle(G, weight='weight'):
         G.remove_node(newnode)
 
 
-
-
-
 def bellman_ford(G, source, target, weight='weight'):
+    """
+    Compute shortest path and shortest path lengths between a source node
+    and target node in weighted graphs using the Bellman-Ford algorithm.
+
+    Parameters
+    ----------
+    G : NetworkX graph
+
+    pred: dict
+        Keyed by node to predecessor in the path
+
+    dist: dict
+        Keyed by node to the distance from the source
+
+    source: list
+        List of source nodes
+
+    weight: string
+       Edge data key corresponding to the edge weight
+
+    Returns
+    -------
+    length : numeric
+        Length of a negative edge cycle if one exists, otherwise None.
+
+    nodes: list
+        Nodes in a negative edge cycle (in order) if one exists,
+        otherwise None.
+
+    negative_cycle : bool
+        True if a negative edge cycle exists, otherwise False.
+
+    Examples
+    --------
+    >>> import networkx as nx
+    >>> G = nx.path_graph(5, create_using = nx.DiGraph())
+    >>> bf.bellman_ford(G, source=0, target=4)
+    (3, [1, 2, 3, 4], False)
+    """
     # Get shortest path tree
     pred, dist, negative_cycle_end = bellman_ford_tree(G, source, weight)
 
