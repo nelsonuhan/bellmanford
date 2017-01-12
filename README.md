@@ -22,24 +22,16 @@ Compute shortest path and shortest path lengths between a source node and target
 
 #### Parameters
 * `G` : NetworkX graph
-* `pred` : dict
-  Keyed by node to predecessor in the path
-* `dist` : dict
-  Keyed by node to the distance from the source
-* `source`: node label
-  Source node
-* `target`: node label
-  Target node
-* `weight` : string
-  Edge data key corresponding to the edge weight
+* `pred` : dict -- Keyed by node to predecessor in the path
+* `dist` : dict -- Keyed by node to the distance from the source
+* `source`: node label -- Source node
+* `target`: node label -- Target node
+* `weight` : string -- Edge data key corresponding to the edge weight
 
 #### Returns
-* `length` : numeric
-  Length of a negative cycle if one exists; otherwise length of a shortest path.
-* `nodes` : list
-  Nodes in a negative edge cycle (in order) if one exists; otherwise nodes in a shortest path.
-* `negative_cycle` : bool
-  `True` if a negative edge cycle exists, otherwise `False`.
+* `length` : numeric -- Length of a negative cycle if one exists; otherwise length of a shortest path.
+* `nodes` : list -- Nodes in a negative edge cycle (in order) if one exists; otherwise nodes in a shortest path.
+* `negative_cycle` : bool -- `True` if a negative edge cycle exists, otherwise `False`.
 
 #### Examples
 ```python
@@ -59,16 +51,12 @@ If there is a negative edge cycle anywhere in `G`, returns `True`. Also returns 
 
 #### Parameters
 * `G` : NetworkX graph
-* `weight` : string, optional (default='weight')
-  Edge data key corresponding to the edge weight
+* `weight` : string, optional (default='weight') -- Edge data key corresponding to the edge weight
 
 #### Returns
-* `length` : numeric
-  Length of a negative edge cycle if one exists, otherwise `None`.
-* `nodes` : list
-  Nodes in a negative edge cycle (in order) if one exists, otherwise `None`.
-* `negative_cycle` : bool
-  `True` if a negative edge cycle exists, otherwise `False`.
+* `length` : numeric -- Length of a negative edge cycle if one exists, otherwise `None`.
+* `nodes` : list -- Nodes in a negative edge cycle (in order) if one exists, otherwise `None`.
+* `negative_cycle` : bool -- `True` if a negative edge cycle exists, otherwise `False`.
 
 #### Examples
 
