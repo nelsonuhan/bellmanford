@@ -92,8 +92,11 @@ def bellman_ford(G, source, target, weight='weight'):
     dist: dict
         Keyed by node to the distance from the source
 
-    source: list
-        List of source nodes
+    source: node label
+        Source node
+
+    target: node label
+        Target node
 
     weight: string
        Edge data key corresponding to the edge weight
@@ -101,11 +104,12 @@ def bellman_ford(G, source, target, weight='weight'):
     Returns
     -------
     length : numeric
-        Length of a negative edge cycle if one exists, otherwise None.
+        Length of a negative cycle if one exists;
+        otherwise length of a shortest path.
 
     nodes: list
-        Nodes in a negative edge cycle (in order) if one exists,
-        otherwise None.
+        Nodes in a negative edge cycle (in order) if one exists;
+        otherwise nodes in a shortest path.
 
     negative_cycle : bool
         True if a negative edge cycle exists, otherwise False.
