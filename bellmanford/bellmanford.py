@@ -50,28 +50,34 @@ def negative_edge_cycle(G, weight='weight'):
     newnode = generate_unique_node()
     G.add_edges_from([(newnode, n) for n in G])
 
-    pred, dist, negative_cycle_end = bellman_ford_tree(G, newnode, weight)
+    try:
+        pred, dist, negative_cycle_end = bellman_ford_tree(G, newnode, weight)
 
-    nodes = []
+        if negative_cycle_end:
+            nodes = []
+            negative_cycle = True
+            end = negative_cycle_end
+            while True:
+                nodes.insert(0, end)
+                if nodes.count(end) > 1:
+                    end_index = nodes[1:].index(end) + 2
+                    nodes = nodes[:end_index]
+                    break
+                end = pred[end]
+            length = sum(
+                G[u][v].get(weight, 1) for (u, v) in zip(nodes, nodes[1:])
+            )
+        else:
+            nodes = None
+            negative_cycle = False
+            length = None
 
-    if negative_cycle_end:
-        negative_cycle = True
-        end = negative_cycle_end
-        while True:
-            nodes.insert(0, end)
-            if nodes.count(end) > 1:
-                end_index = nodes[1:].index(end) + 2
-                nodes = nodes[:end_index]
-                break
-            end = pred[end]
-        length = sum(
-            G[u][v].get(weight, 1) for (u, v) in zip(nodes, nodes[1:])
-        )
-    else:
-        negative_cycle = False
-        length = None
+        return length, nodes, negative_cycle
+    finally:
+        G.remove_node(newnode)
 
-    return length, nodes, negative_cycle
+
+
 
 
 def bellman_ford(G, source, target, weight='weight'):
