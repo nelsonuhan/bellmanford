@@ -4,7 +4,8 @@ from networkx.utils import generate_unique_node
 
 def negative_edge_cycle(G, weight='weight'):
     """
-    Return True if there exists a negative edge cycle anywhere in G.
+    If there is a negative edge cycle anywhere in G, returns True.
+    Also returns the total weight of the cycle and the nodes in the cycle.
 
     Parameters
     ----------
@@ -17,9 +18,11 @@ def negative_edge_cycle(G, weight='weight'):
     -------
     length : numeric
         Length of a negative edge cycle if one exists, otherwise None.
+
     nodes: list
         Nodes in a negative edge cycle (in order) if one exists,
         otherwise None.
+
     negative_cycle : bool
         True if a negative edge cycle exists, otherwise False.
 
