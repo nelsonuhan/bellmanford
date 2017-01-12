@@ -218,7 +218,8 @@ def bellman_ford_tree(G, source, weight='weight'):
 
 
 def _bellman_ford_relaxation(G, pred, dist, source, weight):
-    """Relaxation loop for Bellman–Ford algorithm
+    """
+    Relaxation loop for Bellman–Ford algorithm
 
     Parameters
     ----------
@@ -263,21 +264,27 @@ def _bellman_ford_relaxation(G, pred, dist, source, weight):
     while q:
         u = q.popleft()
         in_q.remove(u)
+
         # Skip relaxations if the predecessor of u is in the queue.
         if pred[u] not in in_q:
             dist_u = dist[u]
+
             for v, e in G_succ[u].items():
                 dist_v = dist_u + get_weight(e)
+
                 if dist_v < dist.get(v, inf):
                     dist[v] = dist_v
                     pred[v] = u
+
                     if v not in in_q:
                         q.append(v)
                         in_q.add(v)
                         count_v = count.get(v, 0) + 1
+
                         if count_v == n:
                             negative_cycle_end = u
                             return pred, dist, negative_cycle_end
+
                         count[v] = count_v
 
     negative_cycle_end = None
