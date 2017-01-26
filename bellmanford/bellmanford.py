@@ -141,7 +141,7 @@ def bellman_ford(G, source, target, weight='weight'):
         end = target
         while True:
             nodes.insert(0, end)
-            if not pred[end]:
+            if pred[end] is None:
                 break
             end = pred[end]
 
