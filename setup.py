@@ -1,11 +1,14 @@
 import setuptools
-import pypandoc
 
-long_description = pypandoc.convert('README.md', 'rst')
+try:
+    import pypandoc
+    long_description = pypandoc.convert('README.md', 'rst')
+except ImportError:
+    long_description = ''
 
 setuptools.setup(
     name='bellmanford',
-    version='0.1',
+    version='0.1.1',
     description='''
         Small extensions of the Bellman-Ford routines in NetworkX, primarily
         for convenience (https://networkx.github.io).
