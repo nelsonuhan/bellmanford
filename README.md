@@ -29,8 +29,8 @@ Compute shortest path and shortest path lengths between a source node and target
 * `weight` : string - Edge data key corresponding to the edge weight
 
 #### Returns
-* `length` : numeric - Length of a negative cycle if one exists; otherwise length of a shortest path.
-* `nodes` : list - Nodes in a negative edge cycle (in order) if one exists; otherwise nodes in a shortest path.
+* `length` : numeric - Length of a negative cycle if one exists. Otherwise, length of a shortest path. Length is `inf` if `source` and `target` are not connected.
+* `nodes` : list - Nodes in a negative edge cycle (in order) if one exists. Otherwise nodes in a shortest path. List is empty if `source` and `target` are not connected.
 * `negative_cycle` : bool - `True` if a negative edge cycle exists, otherwise `False`.
 
 #### Examples
