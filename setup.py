@@ -8,7 +8,7 @@ except ImportError:
 
 setuptools.setup(
     name='bellmanford',
-    version='0.1.2',
+    version='0.2',
     description='''
         Small extensions of the Bellman-Ford routines in NetworkX, primarily
         for convenience (https://networkx.github.io).
