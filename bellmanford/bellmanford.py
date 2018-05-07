@@ -1,7 +1,6 @@
 from collections import deque
 from networkx.utils import generate_unique_node
 
-
 def negative_edge_cycle(G, weight='weight'):
     """
     If there is a negative edge cycle anywhere in G, returns True.
@@ -141,13 +140,20 @@ def bellman_ford(G, source, target, weight='weight'):
         end = target
         while True:
             nodes.insert(0, end)
-            if pred[end] is None:
+            # If end has no predecessor
+            if pred.get(end, None) is None:
+                # If end is not s, then there is no s-t path
+                if end != source:
+                    nodes = []
                 break
             end = pred[end]
 
-    length = sum(
-        G[u][v].get(weight, 1) for (u, v) in zip(nodes, nodes[1:])
-    )
+    if nodes:
+        length = sum(
+            G[u][v].get(weight, 1) for (u, v) in zip(nodes, nodes[1:])
+        )
+    else:
+        length = float('inf')
 
     return length, nodes, negative_cycle
 
